@@ -1,4 +1,6 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import React from 'react';
+import db from '../db.json';
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -24,11 +26,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const theme = {
-  colors: {
-    primary: '#0070f3',
-  },
-}
+const { theme } = db;
 
 export default function App({ Component, pageProps }) {
   return (
