@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Widget from '../src/components/Widget';
 import QuizBackground from '../src/components/QuizBackground';
-import Footer from '../src/components/Footer';
-import GitHubCorner from '../src/components/GitHubCorner';
-import db from '../db.json';
-import QuizLogo from '../src/components/QuizLogo';
 import QuizContainer from '../src/components/QuizContainer'
+import GitHubCorner from '../src/components/GitHubCorner';
+import QuizLogo from '../src/components/QuizLogo';
+import Footer from '../src/components/Footer';
+import Button from '../src/components/Button';
+import Input from '../src/components/Input';
 import { useRouter } from 'next/router';
+import db from '../db.json';
 
 export default function Home() {
   const router = useRouter();
@@ -25,11 +27,12 @@ export default function Home() {
               infoDoEvento.preventDefault();
               router.push(`/quiz?name=${name}`);
             }}>
-              <input onChange={function(infosDoEvento){
-                setName(infosDoEvento.target.value);
+              <Input onChange={(infosDoEvento) => {
+                setName(infosDoEvento.target.value) 
               }} 
-              placeholder="Nome"></input>
-              <button type="submit" disabled={!name}>Jogar</button>
+              placeholder="Nome"
+              value={name}/>
+              <Button type="submit" disabled={!name}>Jogar</Button><br/>
             </form>
           </Widget.Content>
         </Widget>
