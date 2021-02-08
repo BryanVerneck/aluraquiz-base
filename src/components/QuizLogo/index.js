@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 function Logo({ className }) {
   return (
@@ -30,7 +30,7 @@ function Logo({ className }) {
 }
 
 Logo.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: propTypes.string.isRequired,
 };
 
 const QuizLogo = styled(Logo)`

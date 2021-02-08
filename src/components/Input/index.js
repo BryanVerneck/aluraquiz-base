@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 const InputBase = styled.input`
     width: 100%;
@@ -26,9 +26,9 @@ Input.defaultProps = {
     value: '',
 }
 
-Input.PropTypes = {
-    onChange: PropTypes.func.isRequired,
-    placeholder: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    value: PropTypes.string,
+Input.propTypes = {
+    onChange: propTypes.func.isRequired,
+    placeholder: propTypes.string.isRequired,
+    name: propTypes.string,
+    value: propTypes.string,
 }
