@@ -45,6 +45,7 @@ export default function Home() {
         <Footer/>
         <GitHubCorner projectUrl="https://github.com/bryanverneck"/>
       </QuizContainer>
+      <p style={{textAlign:"center", color: "yellow"}}>Work in progress</p>
     </QuizBackground>
   ); 
 }
