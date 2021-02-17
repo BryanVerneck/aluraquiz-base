@@ -1,6 +1,8 @@
 import React from 'react';
 import QuizBackground from '../src/components/QuizBackground';
+import GitHubCorner from '../src/components/GitHubCorner';
 import QuizContainer from '../src/components/QuizContainer';
+import AlternativesForm from "../src/components/AlternativesForm";
 import Widget from '../src/components/Widget';
 import Button from '../src/components/Button';
 import db from '../db.json';
@@ -75,7 +77,7 @@ function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit, add
                     {question.description}
                 </p>
 
-                <form
+                <AlternativesForm
                     onSubmit={(infosDoEvento) => {
                         infosDoEvento.preventDefault();
                         setIsQuestionSubmited(true);
@@ -88,12 +90,16 @@ function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit, add
                       }}>
                     {question.alternatives.map((alternative, alternativeIndex) => {
                         const alternativeId = `alternative__${alternativeIndex}`;
+                        const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR';
+                        const isSelected = selectedAlternative === alternativeIndex;                   
                         return(
                             <Widget.Topic as="label"
                                 key={alternativeId}
-                                htmlFor={alternativeId}>
+                                htmlFor={alternativeId}
+                                data-selected={isSelected}
+                                data-status={isQuestionSubmited && alternativeStatus}>
                                 <input
-                                    // style={{ display: 'none' }}
+                                    style={{ display: 'none' }}
                                     id={alternativeId}
                                     name={questionId}
                                     onChange={() => setSelectedAlternative(alternativeIndex)}
@@ -107,7 +113,7 @@ function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit, add
                     </Button>
                     {isQuestionSubmited && isCorrect && <p>Você acertou!</p>}
                     {isQuestionSubmited && !isCorrect && <p>Você errou!</p>}
-                </form>
+                </AlternativesForm>
             </Widget.Content>
         </Widget>  
     )
@@ -164,7 +170,7 @@ export default function Quiz(){
                 {screenState === screenStates.LOADING && <LoadingWidget/>}
 
                 {screenState === screenStates.RESULT && <ResultWidget results={results}/>}
-
+                <GitHubCorner projectUrl="https://github.com/bryanverneck"/>
             </QuizContainer>
             <p style={{textAlign:"center", color: "yellow", position: "absolute", bottom: 0, width: "100%", fontSize: 20}}>Work in progress</p>
         </QuizBackground>
